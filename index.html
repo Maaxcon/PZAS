@@ -6,40 +6,112 @@
     <title>Кафедра ПЗАС</title>
     <link rel="stylesheet" href="style-main.css">
     <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="header_style.css">
 </head>
 <body>
-    <header class="header">
-        <img src="img-main-page/Logo_fitis.png" alt="Logo-PZAS">
-
-        <div class="pz-block">
-            <div class="pz-letters">
-                <div>П</div>
-                <div>З</div>
-                <div>А</div>
-                <div>С</div>
-            </div>
-            <div class="pz-text">
-                <p>РОГРАМНЕ</p>
-                <p>АБЕЗПЕЧЕННЯ</p>
-                <p>ВТОМАТИЗОВАНИХ</p>
-                <p>ИСТЕМ</p>
-            </div>
-        </div>
-
-        <ul class="list">
-            <li class="nav">Новини</li>
-            <li class="nav">Викладачі</li>
-            <li class="nav">Спеціальність</li>
-            <li class="nav">Стипендії</li>
-        </ul>
-    </header>
-
-    <main>
+   <div class="header"></div>
+     <main>
         <div class="title_and_but">
             <h1 class="title">Кафедра, де таланти перетворюються на професіоналів</h1>
-            <button class="but_other_profes">Наші спеціальності →</button>
+            <button class="but_other_profes more-button">Наші спеціальності →</button>
         </div>
-        <img src="/img-main-page/students_main.png" alt="">
+        <img class="student_photo_main" src="/img-main-page/students_main.png" alt="">
     </main>
+
+    <!-- Останні новини -->
+    <section class="news-section">
+        <h2 class="section-title">Останні новини</h2>
+        <div class="news-container">
+            <div class="news-card">
+                <img src="/img-main-page/news/photo_news_1.png" alt="Перша новина">
+                <h3>First news</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed est, consequat facilisis at auctor at, rutrum in magna vitae.</p>
+            </div>
+            <div class="news-card">
+                <img src="/img-main-page/news/photo_news_2.png" alt="Друга новина">
+                <h3>Second news</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed est, consequat facilisis at auctor at, rutrum in magna vitae.</p>
+            </div>
+            <div class="news-card">
+                <img src="/img-main-page/news/photo_news_3.png" alt="Третя новина">
+                <h3>Third news</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed est, consequat facilisis at auctor at, rutrum in magna vitae.</p>
+            </div>
+        </div>
+        <div class="more-news">
+            <button class="more-button">Дізнатися більше →</button>
+        </div>
+    </section>
+
+    <!-- Цікаві факти -->
+    <section class="facts-section">
+        <h2 class="section-title">Цікаві факти</h2>
+        <div class="facts-container">
+            <div class="fact-card">
+                <img src="img-main-page/facts/icons_facts_1.png" alt="Випускники">
+                <p>Випускники працюють в Google, EPAM, SoftServe, Samsung.</p>
+            </div>
+            <div class="fact-card">
+                <img src="img-main-page/facts/icons_facts_2.png" alt="Викладачі">
+                <p>На нашій кафедрі працюють керівники та спеціалісти IT компаній</p>
+            </div>
+            <div class="fact-card">
+                <img src="img-main-page/facts/icons_facts_3.png" alt="Співпраця">
+                <p>Співпраця з IT-компаніями та університетами Європи</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Досягнення кафедри -->
+    <section class="achievements-section">
+        <h2 class="section-title">Досягнення кафедри</h2>
+        <div class="achievements-container">
+            <div class="achievement-card">
+                <img src="/img-main-page/achivment/achviv_icon_1.png" alt="Інноваційні проекти">
+                <h3>Інноваційні проекти</h3>
+                <p>Розробка нових сучасних освітніх програм, використання інноваційних і креативних технологій IT-індустрії.</p>
+            </div>
+            <div class="achievement-card">
+                <img src="img-main-page/achivment/achviv_icon_2.png" alt="Національне визнання">
+                <h3>Національне визнання</h3>
+                <p>ТОП-10 ІТ-освітніх програм України! Постійна співпраця, менторство та успішна комунікація з компаніями.</p>
+            </div>
+            <div class="achievement-card">
+                <img src="img-main-page/achivment/achviv_icon_3.png" alt="Наукові публікації">
+                <h3>Наукові публікації</h3>
+                <p>Викладачі та аспіранти кафедри публікують свої праці в провідних наукових журналах з інформатики.</p>
+            </div>
+            <div class="achievement-card">
+                <img src="img-main-page/achivment/achviv_icon_4.png" alt="Міжнародна співпраця">
+                <h3>Міжнародна співпраця</h3>
+                <p>Кафедра та історично кафедри попередники мають успішний досвід співпраці з міжнародними IT-компаніями.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ключові показники -->
+    <section class="indicators-section">
+        <h2 class="section-title">Ключові показники</h2>
+        <div class="indicators-container">
+            <div class="indicator">
+                <h3>25+</h3>
+                <p>викладачів кафедри</p>
+            </div>
+            <div class="indicator">
+                <h3>843</h3>
+                <p>випускників програм</p>
+            </div>
+            <div class="indicator">
+                <h3>12</h3>
+                <p>партнерів проектів</p>
+            </div>
+            <div class="indicator">
+                <h3>9+</h3>
+                <p>років співпраці</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="script_main.js"></script>
 </body>
 </html>
