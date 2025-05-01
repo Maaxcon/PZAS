@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Викладачі кафедри</title>
     <link rel="stylesheet" href="/css/lecturs.css"> 
+    <link rel="stylesheet" href="/css/header_style.css">
 </head>
 <body>
-    <header>
+    <header class="header"></header>
+    <div>
         <div class="container">
             <div class="header-content">
                 <div class="header-left">
@@ -20,7 +22,7 @@
                 </div>
             </div>
         </div>
-    </header>
+    </div>
     
     <div class="container">
         <div class="content-section">
@@ -118,13 +120,11 @@
         </div>
     </div>
     
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Кафедра програмного забезпечення та автоматизованих систем. Всі права захищені.</p>
-        </div>
-    </footer>
+    <footer class="footer"></footer>
+
 
     <!-- JavaScript для виведення карток викладачів з бази даних -->
+     <script src="/script/script_connect_H-F.js"></script>
     <script>
         // Приклад структури даних з викладачами
         const teachersData = {

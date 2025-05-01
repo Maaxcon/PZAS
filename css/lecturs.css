@@ -17,12 +17,7 @@ body {
     padding: 0 20px;
 }
 
-header {
-    background-color: #fff;
-    border-bottom: 1px solid #ddd;
-    padding: 20px 0;
-    margin-bottom: 30px;
-}
+
 
 .header-content {
     display: flex;
@@ -205,7 +200,7 @@ h2 {
     text-decoration: underline;
 }
 
-footer {
+.foter {
     background-color: #fff;
     border-top: 1px solid #ddd;
     padding: 20px 0;
