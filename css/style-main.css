@@ -14,6 +14,7 @@ body {
     box-sizing: border-box;
 }
 
+
 /* Основна частина */
 main {
    
@@ -51,6 +52,7 @@ main button {
 }
 
 .title {
+    margin-left: 200px;
     width: 660px;
     font-size: 45px;
     line-height: 1.2;
@@ -125,7 +127,7 @@ main button {
 }
 
 .more-button {
-    padding: 12px 24px;
+    padding: 12px 20px;
     color: #ffffff;
     background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(0, 204, 247, 1) 37%, rgba(9, 9, 121, 1) 100%);
     font-family: "Inter", sans-serif;
@@ -134,6 +136,7 @@ main button {
     font-size: 16px;
     border-radius: 8px;
     cursor: pointer;
+    margin-left: 200px;
 }
 
 /* Цікаві факти */
