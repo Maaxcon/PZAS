@@ -11,8 +11,8 @@ fetch('/contains(H-F)_HTML/footer.html')
 })
 
 
-fetch("/bot.html")
-.then(responce => responce.text())
-.then(data =>{
-    document.querySelector(".header").innerHTML += data
-})
+// fetch("/bot.html")
+// .then(responce => responce.text())
+// .then(data =>{
+//     document.querySelector(".header").innerHTML += data
+// })

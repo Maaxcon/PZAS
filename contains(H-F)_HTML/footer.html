@@ -32,11 +32,12 @@ body {
 }
 
 .footer-container {
-    max-width: 1300px;
+    max-width: 100%;
     margin: 0;
     padding: 0 20px;
     display: flex;
     align-items: center; /* для вирівнювання по висоті */
+    justify-content: space-between; /* для вирівнювання по краях */
     flex-wrap: wrap;
     gap: 20px;
 }
@@ -45,7 +46,8 @@ body {
 .footer-left {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 12px;   
+    margin-left: 5%;
 }
 
 .logo-icon {
@@ -85,9 +87,8 @@ body {
 
 /* Центр */
 .footer-center {
-    flex: 1;
-    display: flex;
     justify-content: center;
+    margin-right: 5%; /* Вирівнювання по центру */
 }
 
 .contact {
@@ -108,7 +109,7 @@ body {
     display: flex;
     flex-direction: row;
     gap: 10px;
-   
+   margin-right: 5%;
 }
 
 .footer-right a img {
@@ -131,7 +132,6 @@ body {
     }
 
     .footer-left,
-    .footer-center,
     .footer-right {
         justify-content: center;
     }
@@ -145,10 +145,7 @@ body {
     </style>
 </head>
 <body>
-    <div class="content">
-        <!-- Пустий контент сторінки -->
-    </div>
-    
+
     <footer class="footer">
         <div class="footer-container">
       
