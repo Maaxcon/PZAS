@@ -62,7 +62,7 @@ section {
 
 /* Header Styles */
 .main-header {
-    background-color: #2e71ba;
+    background: linear-gradient(to right, #2e71ba, #283594);
     color: white;
     padding: 80px 0;
     text-align: center;
