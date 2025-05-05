@@ -127,16 +127,35 @@ main button {
 }
 
 .more-button {
-    padding: 12px 20px;
-    color: #ffffff;
-    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(0, 204, 247, 1) 37%, rgba(9, 9, 121, 1) 100%);
-    font-family: "Inter", sans-serif;
-    border: none;
+    display: inline-block;
+    background: linear-gradient(to right, #2e71ba, #283594);
+    color: white;
+    text-decoration: none;
+    padding: 15px 60px;
+    border-radius: 30px;
     font-weight: 600;
-    font-size: 16px;
-    border-radius: 8px;
-    cursor: pointer;
+    font-size: 18px;
+    transition: transform 0.3s, box-shadow 0.3s;
     margin-left: 200px;
+}
+
+.more-button-news {
+    display: inline-block;
+    background: linear-gradient(to right, #2e71ba, #283594);
+    color: white;
+    text-decoration: none;
+    padding: 15px 60px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 18px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: none;
+}
+
+.more-button-news:hover,
+.more-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
 /* Цікаві факти */
