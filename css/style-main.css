@@ -127,16 +127,24 @@ main button {
 }
 
 .more-button {
-    display: inline-block;
-    background: linear-gradient(to right, #2e71ba, #283594);
+    display: inline-block; /* Забезпечує, що кнопка займає лише необхідну ширину */
+    background: linear-gradient(to right, #2e71ba, #283594); /* Градієнт */
     color: white;
     text-decoration: none;
-    padding: 15px 60px;
-    border-radius: 30px;
+    padding: 15px 60px; /* Зменшено внутрішні відступи */
+    border-radius: 30px; /* Закруглені краї */
     font-weight: 600;
-    font-size: 18px;
+    font-size: 16px;
+    text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
-    margin-left: 200px;
+    border: none; /* Видалення рамки */
+    cursor: pointer; /* Зміна курсора на "руку" */
+    margin: 0 auto; /* Центрування кнопки */
+}
+
+.more-button:hover {
+    transform: translateY(-3px); /* Легке підняття при наведенні */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Тінь при наведенні */
 }
 
 .more-button-news {

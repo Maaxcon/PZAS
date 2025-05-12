@@ -20,6 +20,7 @@ app.use(
         scriptSrc: ["'self'", "https://maps.googleapis.com"],
         frameSrc: ["'self'", "https://www.google.com"],
         styleSrc: ["'self'", "https://cdnjs.cloudflare.com"],
+        scriptSrcAttr: ["'self'"], // Дозволяє інлайн-скрипти
       },
     },
   })
@@ -102,3 +103,5 @@ process.on('SIGTERM', () => {
 });
 
 module.exports = app;
+
+
