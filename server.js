@@ -73,6 +73,13 @@ app.get('/footer.html', (req, res) => {
   res.sendFile(path.join(__dirname, 'containsHF_HTML', 'footer.html'));
 });
 
+// Додаємо маршрут для news.json
+app.get('/news.json', (req, res) => {
+  res.sendFile(path.join(__dirname, 'news.json'));
+});
+
+
+
 // ❌ Сторінка 404
 app.use((req, res, next) => {
   res.status(404).sendFile(path.join(__dirname, 'html-page', '404.html'));
