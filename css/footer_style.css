@@ -1,3 +1,6 @@
+/* footer_style.css */
+
+/* Базові стилі */
 * {
     margin: 0;
     padding: 0;
@@ -16,120 +19,292 @@ body {
     padding: 20px;
 }
 
+/* Основні стилі футера */
 .footer {
     background-color: #000;
     color: #fff;
-   
-    padding: 20px 0;
-    font-size: 14px;
+    padding: 40px 0 20px;
+    width: 100%;
 }
 
 .footer-container {
-    max-width: 100%;
-    margin: 0;
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 0 20px;
     display: flex;
-    align-items: center; /* для вирівнювання по висоті */
-    justify-content: space-between; /* для вирівнювання по краях */
+    justify-content: space-between;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 30px;
 }
 
-/* Ліва частина */
+/* Ліва частина футера */
 .footer-left {
+    flex: 1;
+    min-width: 300px;
+}
+
+.logos-container {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 10px 0;
+}
+
+.main-logos {
     display: flex;
     align-items: center;
-    gap: 12px;   
-    margin-left: 5%;
+    gap: 25px;
 }
 
 .logo-icon {
-    height: 80px;
+    height: 90px;
     object-fit: contain;
-}
-
-.logo-block {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    gap: 5px;
-}
-
-.logo-chdtu-block {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
 }
 
 .logo-chdtu {
-    height: 50px;
+    height: 65px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.university-title {
+    margin: 12px 0;
+}
+
+.ministry-logo {
+    margin-top: 8px;
 }
 
 .logo_ua {
-    width: 180px;
-    height: 34px;
+    width: 220px;
+    height: auto;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
 }
 
 .footer-title {
     font-weight: 700;
-    font-size: 16px;
+    font-size: 18px;
     text-transform: uppercase;
     color: #fff;
-    line-height: 1.2;
+    line-height: 1.3;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
 }
 
-/* Центр */
+/* Центральна частина футера */
 .footer-center {
-    justify-content: center;
-    margin-right: 5%; /* Вирівнювання по центру */
+    flex: 1;
+    min-width: 300px;
+}
+
+.footer-center h4 {
+    font-size: 20px;
+    margin-bottom: 18px;
+    color: #fff;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-center h4:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background-color: #4a90e2;
 }
 
 .contact {
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    font-size: 14px;
+    gap: 12px;
+    font-size: 15px;
+    margin-bottom: 25px;
 }
 
-.contact div {
+.contact-item {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 12px;
+    transition: transform 0.2s ease;
+    color: #fff;
+    text-decoration: none;
 }
 
-/* Права частина */
-.footer-right {
+.contact-item:hover {
+    transform: translateX(5px);
+    color: #4a90e2;
+}
+
+.contact i {
+    color: #4a90e2;
+    width: 20px;
+    text-align: center;
+    font-size: 18px;
+}
+
+/* Соціальні іконки */
+.social-icons {
     display: flex;
-    flex-direction: row;
-    gap: 10px;
-   margin-right: 5%;
+    gap: 12px;
+    margin-top: 20px;
 }
 
-.footer-right a img {
-    width: 32px;
-    height: 32px;
-    object-fit: contain;
-    transition: transform 0.3s ease;
+.social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #333;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
-.footer-right a:hover img {
-    transform: scale(1.1);
+.social-icons a:hover {
+    background-color: #4a90e2;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+}
+
+.social-icons i {
+    font-size: 20px;
+}
+
+/* Права частина з картою */
+.footer-map {
+    flex: 1.5;
+    min-width: 350px;
+}
+
+.footer-map h4 {
+    font-size: 20px;
+    margin-bottom: 18px;
+    color: #fff;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-map h4:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background-color: #4a90e2;
+}
+
+.map-container {
+    position: relative;
+    height: 280px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    border: 2px solid rgba(255,255,255,0.1);
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+}
+
+/* Нижній бордер з копірайтом */
+.footer-bottom {
+    text-align: center;
+    margin-top: 35px;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    font-size: 14px;
+    color: #aaa;
 }
 
 /* Адаптивність */
+@media (max-width: 992px) {
+    .footer-container {
+        justify-content: space-around;
+    }
+   
+    .footer-left, .footer-center, .footer-map {
+        min-width: 45%;
+    }
+    
+    .footer-map {
+        min-width: 90%;
+        order: 3;
+    }
+}
+
 @media (max-width: 768px) {
     .footer-container {
         flex-direction: column;
         align-items: center;
-        text-align: center;
     }
-
-    .footer-left,
-    .footer-right {
+   
+    .footer-left, .footer-center, .footer-map {
+        width: 100%;
+        min-width: 100%;
+    }
+    
+    .logos-container {
+        align-items: center;
+    }
+    
+    .main-logos {
         justify-content: center;
     }
+   
+    .university-title {
+        text-align: center;
+    }
+    
+    .ministry-logo {
+        display: flex;
+        justify-content: center;
+    }
+   
+    .footer-title {
+        text-align: center;
+    }
+   
+    .footer-center h4, .footer-map h4 {
+        text-align: center;
+    }
+    
+    .footer-center h4:after, .footer-map h4:after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+   
+    .social-icons {
+        justify-content: center;
+    }
+   
+    .contact-item {
+        justify-content: center;
+    }
+    
+    .map-container {
+        height: 250px;
+    }
+}
 
-    .logo-block {
-        align-items: center;
+/* Ефекти наведення та взаємодії */
+.footer a:focus {
+    outline: 2px solid #4a90e2;
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .social-icons a:hover i {
+        animation: bounce 0.4s;
+    }
+    
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-5px); }
     }
 }

@@ -1,33 +1,66 @@
-
+<!-- footer.html -->
 <footer class="footer">
-    <div class="footer-container">      
-        <!-- Ліва частина: ФІТІС + група логотипів -->
-        <div class="footer-left">
-            <img src="/img-main-page/fitis_logo.png" alt="ФІТІС" class="logo-icon">
-            <div class="logo-block">
-                <div class ="logo-chdtu-block"> 
-                    <img src="/img-main-page/chdtu_logo 3.png" alt="ЧДТУ" class="logo-chdtu">
-                    <div class="footer-title">Черкаський державний<br>технологічний університет</div>
-                </div>
-              <img src="/img-main-page/UA_Logo.png" alt="UA" class="logo_ua">
-            </div>
+  <div class="footer-container">      
+      <!-- Ліва частина: Група логотипів -->
+      <div class="footer-left">
+          <div class="logos-container">
+              <div class="main-logos">
+                  <img src="/img-main-page/fitis_logo.png" alt="ФІТІС" class="logo-icon">
+                  <img src="/img-main-page/chdtu_logo 3.png" alt="ЧДТУ" class="logo-chdtu">
+              </div>
+              <div class="university-title">
+                  <div class="footer-title">Черкаський державний<br>технологічний університет</div>
+              </div>
+              <div class="ministry-logo">
+                  <img src="/img-main-page/UA_Logo.png" alt="Міністерство освіти і науки України" class="logo_ua">
+              </div>
           </div>
-      
-          <!-- Центр: Контактна інформація -->
-          <div class="footer-center">
-            <div class="contact">
-              <div><span>📞</span> +380 93 191 0416</div>
-              <div><span>✉️</span> pzas@chdtu.edu.ua</div>
-              <div><span>🕒</span> 8:00-17:00</div>
-              <div><span>📍</span> бульв. Шевченка 460, 1-й корпус, ауд. 605</div>
-            </div>
+      </div>
+   
+      <!-- Центр: Контактна інформація -->
+      <div class="footer-center">
+          <h4>Контакти</h4>
+          <div class="contact">
+              <a href="tel:+380931910416" class="contact-item">
+                  <i class="fas fa-phone"></i> +380 93 191 0416
+              </a>
+              <a href="mailto:pzas@chdtu.edu.ua" class="contact-item">
+                  <i class="fas fa-envelope"></i> pzas@chdtu.edu.ua
+              </a>
+              <div class="contact-item">
+                  <i class="fas fa-clock"></i> 8:00-17:00
+              </div>
+              <a href="https://maps.app.goo.gl/4EQMKB5U4v9aibLs5" target="_blank" class="contact-item">
+                  <i class="fas fa-map-marker-alt"></i> бульв. Шевченка 458, 1-й корпус, ауд. 605
+              </a>
           </div>
-      
-          <!-- Права частина: Соцмережі -->
-          <div class="footer-right">
-            <a href="#"><img src="/img-main-page/facebook.png" alt="Facebook"></a>
-            <a href="#"><img src="/img-main-page/youtube.png" alt="YouTube"></a>
-            <a href="#"><img src="/img-main-page/instagram.png" alt="Instagram"></a>
+          <div class="social-icons">
+              <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="#" target="_blank" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+              <a href="#" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
           </div>
-    </div>
+      </div>
+   
+      <!-- Права частина: Карта -->
+      <div class="footer-map">
+          <h4>Наше місцезнаходження</h4>
+          <div class="map-container">
+              <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2594.444456633304!2d32.05740631608914!3d49.44469417934836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d14c9793fe22e5%3A0x75cf6b118c5e4fc4!2z0JHRg9C70YzQstCw0YAg0KjQtdCy0YfQtdC90LrQviwgNDU4LCDQp9C10YDQutCw0YHQuCwg0KfQtdGA0LrQsNGB0YzQutCwINC-0LHQu9Cw0YHRgtGMLCAxODAwMA!5e0!3m2!1suk!2sua!4v1715000825882!5m2!1suk!2sua"
+                  width="100%"
+                  height="100%"
+                  style="border:0;"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+          </div>
+      </div>
+  </div>
+  <div class="footer-bottom">
+      <p>&copy; 2025 Кафедра програмного забезпечення автоматизованих систем. Всі права захищені.</p>
+  </div>
 </footer>
+<!-- Підключення Font Awesome для іконок -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
