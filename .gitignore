@@ -24,3 +24,5 @@ Desktop.ini
 # Optional cache/temp folders
 .cache/
 tmp/
+
+serviceAccountKey.json
