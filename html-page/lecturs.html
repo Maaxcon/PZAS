@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/lecturs.css"> 
     <link rel="stylesheet" href="/css/header_style.css">
     <link rel="stylesheet" href="/css/footer_style.css">
+    <link rel="stylesheet" href="/css/scrolltotop.css">
     <link rel="icon" type="image/png" href="/img-main-page/chdtu_logo 3.png">
 </head>
 <body>
@@ -30,174 +31,36 @@
             </div>
             
             <div class="tab-container">
-                <ul class="tabs">
-                    <li><a href="#" class="active">Всі викладачі</a></li>
-                    <li><a href="#">Професори</a></li>
-                    <li><a href="#">Доценти</a></li>
-                    <li><a href="#">Старші викладачі</a></li>
-                    <li><a href="#">Асистенти</a></li>
+                <ul class="tabs" id="roleFilter">
+                    <li><a href="#" class="active" data-role="all">Всі викладачі</a></li>
+                    <li><a href="#" data-role="Професор">Професори</a></li>
+                    <li><a href="#" data-role="Доцент">Доценти</a></li>
+                    <li><a href="#" data-role="Старший викладач">Старші викладачі</a></li>
+                    <li><a href="#" data-role="Асистент">Асистенти</a></li>
                 </ul>
             </div>
-            
+
             <div class="section-content">
-                <!-- Викладачі будуть виведені з бази даних -->
-                
-                <!-- Секція завідувача кафедри -->
                 <div class="teachers-section">
-                    <h3 class="section-title">Завідувач кафедри</h3>
-                    <div class="teachers-grid">
-                        <!-- Картка завідувача кафедри -->
-                        <div class="teacher-card" id="head-1">
-                            <div class="teacher-photo">
-                                <img src="/api/placeholder/300/200" alt="Петренко Олександр Іванович">
-                            </div>
-                            <div class="teacher-info">
-                                <h4 class="teacher-name">Петренко Олександр Іванович</h4>
-                                <p class="teacher-position">Професор, доктор технічних наук</p>
-                                <p class="teacher-specialty">Спеціалізація: Інформаційні системи, прийняття рішень, архітектура програмного забезпечення</p>
-                                <a href="mailto:petrenko@example.com" class="teacher-email">petrenko@example.com</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Секція професорів -->
-                <div class="teachers-section">
-                    <h3 class="section-title">Професори</h3>
-                    <div class="teachers-grid">
-                        <!-- Картка професора 1 -->
-                        <div class="teacher-card" id="prof-1">
-                            <div class="teacher-photo">
-                                <img src="/api/placeholder/300/200" alt="Іваненко Марія Петрівна">
-                            </div>
-                            <div class="teacher-info">
-                                <h4 class="teacher-name">Іваненко Марія Петрівна</h4>
-                                <p class="teacher-position">Професор, доктор технічних наук</p>
-                                <p class="teacher-specialty">Спеціалізація: Комп'ютерні системи, теорія алгоритмів</p>
-                                <a href="mailto:ivanenko@example.com" class="teacher-email">ivanenko@example.com</a>
-                            </div>
-                        </div>
-                        
-                        <!-- Картка професора 2 -->
-                        <div class="teacher-card" id="prof-2">
-                            <div class="teacher-photo">
-                                <img src="/api/placeholder/300/200" alt="Сидоренко Василь Михайлович">
-                            </div>
-                            <div class="teacher-info">
-                                <h4 class="teacher-name">Сидоренко Василь Михайлович</h4>
-                                <p class="teacher-position">Професор, доктор технічних наук</p>
-                                <p class="teacher-specialty">Спеціалізація: Бази даних, інформаційні системи</p>
-                                <a href="mailto:sydorenko@example.com" class="teacher-email">sydorenko@example.com</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Шаблон для виведення інших категорій викладачів -->
-                <div class="teachers-section">
-                    <h3 class="section-title">Доценти</h3>
-                    <div class="teachers-grid">
-                        <!-- Сюди будуть виведені картки доцентів з бази даних -->
-                    </div>
-                </div>
-                
-                <div class="teachers-section">
-                    <h3 class="section-title">Старші викладачі</h3>
-                    <div class="teachers-grid">
-                        <!-- Сюди будуть виведені картки старших викладачів з бази даних -->
-                    </div>
-                </div>
-                
-                <div class="teachers-section">
-                    <h3 class="section-title">Асистенти</h3>
-                    <div class="teachers-grid">
-                        <!-- Сюди будуть виведені картки асистентів з бази даних -->
-                
+                    <div class="teachers-grid" id="teachersList">
+                        <!-- Динамічне завантаження карток викладачів -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
+<!-- scroll -->
+    <button id="scrollToTopBtn">
+        <svg id="arrow-image" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15" />
+          </svg>
+    </button>
+    <!-- scroll -->
     <footer class="footer"></footer>
 
-
-    <!-- JavaScript для виведення карток викладачів з бази даних -->
-     <script src="/script/script_connect_H-F.js"></script>
-     <script src="/script/scroll-to-top.js"></script>
-    <script>
-        // Приклад структури даних з викладачами
-        const teachersData = {
-            head: [
-                {
-                    id: "head-1",
-                    name: "Петренко Олександр Іванович",
-                    position: "Професор, доктор технічних наук",
-                    specialty: "Спеціалізація: Інформаційні системи, прийняття рішень, архітектура програмного забезпечення",
-                    email: "petrenko@example.com",
-                    photo: "/api/placeholder/300/200" // Заглушка для фото
-                }
-            ],
-            professors: [
-                {
-                    id: "prof-1",
-                    name: "Іваненко Марія Петрівна",
-                    position: "Професор, доктор технічних наук",
-                    specialty: "Спеціалізація: Комп'ютерні системи, теорія алгоритмів",
-                    email: "ivanenko@example.com",
-                    photo: "/api/placeholder/300/200" // Заглушка для фото
-                },
-                {
-                    id: "prof-2",
-                    name: "Сидоренко Василь Михайлович",
-                    position: "Професор, доктор технічних наук",
-                    specialty: "Спеціалізація: Бази даних, інформаційні системи",
-                    email: "sydorenko@example.com",
-                    photo: "/api/placeholder/300/200" // Заглушка для фото
-                }
-            ],
-            assistantProfessors: [],
-            seniorLecturers: [],
-            assistants: []
-        };
-
-        // Функція для виведення викладачів на сторінку
-        function renderTeachers() {
-            // Цей код буде замінено на реальну логіку отримання даних з бази
-            // Наприклад, через fetch API або інший спосіб взаємодії з бекендом
-            
-            // У реальному застосуванні тут буде запит до API для отримання даних
-            // fetch('/api/teachers')
-            //   .then(response => response.json())
-            //   .then(data => {
-            //     // Обробка і відображення даних
-            //   })
-            //   .catch(error => console.error('Помилка отримання даних:', error));
-        }
-
-        // Функція для фільтрації викладачів за категоріями
-        function filterTeachers(category) {
-            // Логіка фільтрації викладачів за категоріями (професори, доценти, тощо)
-        }
-
-        // Обробник кліків на вкладки
-        document.addEventListener('DOMContentLoaded', function() {
-            const tabs = document.querySelectorAll('.tabs a');
-            tabs.forEach(tab => {
-                tab.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    tabs.forEach(t => t.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Фільтрація викладачів відповідно до вибраної вкладки
-                    const category = this.textContent.trim();
-                    filterTeachers(category);
-                });
-            });
-            
-            // Ініціалізація відображення всіх викладачів при завантаженні сторінки
-            renderTeachers();
-        });
-    </script>
+    <!-- Підключення JavaScript -->
+    <script src="/script/script_connect_H-F.js"></script>
+    <script src="/script/scroll-to-top.js"></script>
+    <script type="module" src="/script/lecturers.js"></script>
 </body>
 </html>

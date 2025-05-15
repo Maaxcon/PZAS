@@ -14,38 +14,56 @@ const serviceAccount = require("./serviceAccountKey.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  storageBucket: "pzas-db483.appspot.com" // 🔁 замінено на твій bucket
+  storageBucket: "pzas-db483.appspot.com", // 🔁 замінено на твій bucket
 });
 
-const db = admin.firestore();              // Firestore
-const bucket = admin.storage().bucket();   // Firebase Storage
+const db = admin.firestore(); // Firestore
+const bucket = admin.storage().bucket(); // Firebase Storage
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// 🔒 Безпека
+// 🔒 Безпека (дозволяє Firebase та Firestore API)
 app.use(
   helmet({
     contentSecurityPolicy: {
       directives: {
         defaultSrc: ["'self'"],
-        scriptSrc: ["'self'", "https://maps.googleapis.com"],
-        frameSrc: ["'self'", "https://www.google.com"],
-        styleSrc: ["'self'", "https://cdnjs.cloudflare.com"],
-        scriptSrcAttr: ["'self'"],
+        scriptSrc: [
+          "'self'",
+          "https://maps.googleapis.com",
+          "https://www.gstatic.com",
+          "https://www.googleapis.com",
+        ],
+        connectSrc: [
+          "'self'",
+          "https://firestore.googleapis.com",
+          "https://www.googleapis.com",
+          "https://firebasestorage.googleapis.com",
+        ],
+        styleSrc: ["'self'", "https://cdnjs.cloudflare.com", "'unsafe-inline'"],
       },
     },
   })
 );
 
-// 🌐 CORS
+// 🌐 CORS (дозволяє Firebase Storage)
 app.use(
   cors({
-    origin: process.env.ALLOWED_ORIGINS || "*",
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    origin: "*",
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type"],
   })
 );
+
+// 🛡️ Додатковий Content-Security-Policy
+app.use((req, res, next) => {
+  res.setHeader(
+    "Content-Security-Policy",
+    "default-src 'self'; script-src 'self' https://maps.googleapis.com https://www.gstatic.com https://www.googleapis.com; style-src 'self' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; frame-src 'self' https://www.google.com; connect-src 'self' https://firestore.googleapis.com https://www.googleapis.com https://firebasestorage.googleapis.com;"
+  );
+  next();
+});
 
 // 📦 Парсери
 app.use(express.json());
@@ -136,7 +154,6 @@ app.post("/api/upload-lecturers", async (req, res) => {
 
   res.json({ message: "Готово", results });
 });
-
 
 // ❌ Сторінка 404
 app.use((req, res, next) => {
