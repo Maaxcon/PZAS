@@ -13,49 +13,53 @@
 </head>
 <body>
     <header class="header"></header>
-    <div>
+    <main>
         <div class="container">
             <div class="header-content">
                 <div class="header-left">
                     <h1>Викладачі кафедри</h1>
-                    <p class="intro">Наша кафедра пишається висококваліфікованими викладачами, які мають знання і досвід у галузі програмного забезпечення та автоматизованих систем. Наші викладачі поєднують теорію і практику і допомагають студентам досягти своїх професіональних цілей.</p>
+                    <p class="intro">
+                        Наша кафедра пишається висококваліфікованими викладачами, які мають знання і досвід у галузі програмного забезпечення та автоматизованих систем.
+                        Наші викладачі поєднують теорію і практику і допомагають студентам досягти своїх професійних цілей.
+                    </p>
                 </div>
             </div>
         </div>
-    </div>
-    
-    <div class="container">
-        <div class="content-section">
-            <div class="section-header">
-                <h2>Професорсько-викладацький склад</h2>
-            </div>
-            
-            <div class="tab-container">
-                <ul class="tabs" id="roleFilter">
-                    <li><a href="#" class="active" data-role="all">Всі викладачі</a></li>
-                    <li><a href="#" data-role="Професор">Професори</a></li>
-                    <li><a href="#" data-role="Доцент">Доценти</a></li>
-                    <li><a href="#" data-role="Старший викладач">Старші викладачі</a></li>
-                    <li><a href="#" data-role="Асистент">Асистенти</a></li>
-                </ul>
-            </div>
+        
+        <div class="container">
+            <div class="content-section">
+                <div class="section-header">
+                    <h2>Професорсько-викладацький склад</h2>
+                </div>
+                
+                <div class="tab-container">
+                    <ul class="tabs" id="roleFilter">
+                        <li><a href="#" class="active" data-role="all">Всі викладачі</a></li>
+                        <li><a href="#" data-role="Професор">Професори</a></li>
+                        <li><a href="#" data-role="Доцент">Доценти</a></li>
+                        <li><a href="#" data-role="Старший викладач">Старші викладачі</a></li>
+                        <li><a href="#" data-role="Асистент">Асистенти</a></li>
+                    </ul>
+                </div>
 
-            <div class="section-content">
-                <div class="teachers-section">
-                    <div class="teachers-grid" id="teachersList">
-                        <!-- Динамічне завантаження карток викладачів -->
+                <div class="section-content">
+                    <div class="teachers-section">
+                        <div class="teachers-grid" id="teachersList">
+                            <!-- Динамічне завантаження карток викладачів -->
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-<!-- scroll -->
+    </main>
+
+    <!-- Кнопка прокрутки нагору -->
     <button id="scrollToTopBtn">
         <svg id="arrow-image" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="18 15 12 9 6 15" />
-          </svg>
+        </svg>
     </button>
-    <!-- scroll -->
+
     <footer class="footer"></footer>
 
     <!-- Підключення JavaScript -->

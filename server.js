@@ -14,7 +14,8 @@ const serviceAccount = require("./serviceAccountKey.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  storageBucket: "pzas-db483.appspot.com", // 🔁 замінено на твій bucket
+  databaseURL: "https://pzas-db483-default-rtdb.europe-west1.firebasedatabase.app",
+  storageBucket: "pzas-db483.firebasestorage.app",
 });
 
 const db = admin.firestore(); // Firestore
@@ -60,7 +61,13 @@ app.use(
 app.use((req, res, next) => {
   res.setHeader(
     "Content-Security-Policy",
-    "default-src 'self'; script-src 'self' https://maps.googleapis.com https://www.gstatic.com https://www.googleapis.com; style-src 'self' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; frame-src 'self' https://www.google.com; connect-src 'self' https://firestore.googleapis.com https://www.googleapis.com https://firebasestorage.googleapis.com;"
+    "default-src 'self'; " +
+    "script-src 'self' https://maps.googleapis.com https://www.gstatic.com https://www.googleapis.com; " +
+    "style-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline'; " +
+    "font-src 'self' https://cdnjs.cloudflare.com; " +
+    "frame-src 'self' https://www.google.com; " +
+    "connect-src 'self' https://firestore.googleapis.com https://www.googleapis.com https://firebasestorage.googleapis.com; " +
+    "img-src 'self' https://firebasestorage.googleapis.com https://firebasestorage.googleapis.com https://cdn.jsdelivr.net data:;"
   );
   next();
 });
