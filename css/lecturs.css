@@ -225,15 +225,35 @@ h2 {
     padding: 25px;
     border-radius: 6px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: auto;
 }
 
 .teacher-details-page img {
     max-width: 220px;
-    display: block;
-    margin-bottom: 15px;
+    flex-shrink: 0;
+    border-radius: 6px;
 }
 
-.teacher-details-page a {
+.teacher-details-page .details {
+    flex-grow: 1;
+    text-align: justify;
+}
+
+/* Стилі для інформаційних блоків */
+.teacher-details-page .info-block {
+    background-color: #f9f9f9;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Стилі для кнопок */
+.teacher-details-page a.button-link {
     display: inline-block;
     margin-top: 12px;
     padding: 12px 18px;
@@ -244,8 +264,21 @@ h2 {
     transition: background-color 0.3s;
 }
 
-.teacher-details-page a:hover {
+.teacher-details-page a.button-link:hover {
     background-color: #006cc1;
+}
+
+/* Стилі для простих посилань */
+.teacher-details-page .details a:not(.button-link) {
+    padding: 0;
+    background-color: transparent;
+    color: #0078d4;
+    text-decoration: underline;
+}
+
+.teacher-details-page .details a:not(.button-link):hover {
+    color: #0056a3;
+    text-decoration: underline;
 }
 
 /* Адаптивність */

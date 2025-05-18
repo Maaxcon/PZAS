@@ -112,16 +112,25 @@ async function showTeacherDetails(id) {
             const sectionContent = document.querySelector(".section-content");
             sectionContent.innerHTML = `
                 <div class="teacher-details-page">
-                    <h2>${teacherData.name}</h2>
                     <img src="${imageUrl}" alt="${teacherData.name}">
-                    <p><strong>Посада:</strong> ${teacherData.role}</p>
-                    <p><strong>Спеціалізація:</strong> ${teacherData.specialization}</p>
-                    <p><strong>Біографія:</strong> ${teacherData.biography}</p>
-                    <p><strong>Наукові інтереси:</strong> ${teacherData.interests.join(", ")}</p>
-                    <a href="#" id="backToList">Назад до списку</a>
+                    <div class="details">
+                        <h2>${teacherData.name}</h2>
+                        <div class="info-block"><strong>Посада:</strong> ${teacherData.role}</div>
+                        <div class="info-block"><strong>Спеціалізація:</strong> ${teacherData.specialization}</div>
+                        <div class="info-block"><strong>Електронна пошта:</strong> ${teacherData.email || "Не вказано"}</div>
+                        <div class="info-block"><strong>Біографія:</strong> ${teacherData.biography}</div>
+                        <div class="info-block"><strong>Наукові інтереси:</strong> ${teacherData.interests.join(", ")}</div>
+                        ${teacherData.profiles.google_scholar ? `<div class="info-block"><strong>Google Scholar:</strong> <a href="${teacherData.profiles.google_scholar}" target="_blank">${teacherData.profiles.google_scholar}</a></div>` : ''}
+                        ${teacherData.profiles.scopus ? `<div class="info-block"><strong>Scopus:</strong> <a href="${teacherData.profiles.scopus}" target="_blank">${teacherData.profiles.scopus}</a></div>` : ''}
+                        ${teacherData.profiles.orcid ? `<div class="info-block"><strong>ORCID:</strong> <a href="${teacherData.profiles.orcid}" target="_blank">${teacherData.profiles.orcid}</a></div>` : ''}
+                        ${teacherData.profiles.researchgate ? `<div class="info-block"><strong>ResearchGate:</strong> <a href="${teacherData.profiles.researchgate}" target="_blank">${teacherData.profiles.researchgate}</a></div>` : ''}
+                        ${teacherData.profiles.linkedin ? `<div class="info-block"><strong>LinkedIn:</strong> <a href="${teacherData.profiles.linkedin}" target="_blank">${teacherData.profiles.linkedin}</a></div>` : ''}
+                        ${teacherData.profiles.publons ? `<div class="info-block"><strong>Publons:</strong> <a href="${teacherData.profiles.publons}" target="_blank">${teacherData.profiles.publons}</a></div>` : ''}
+                        ${teacherData.profiles.web_of_science ? `<div class="info-block"><strong>Web of Science:</strong> <a href="${teacherData.profiles.web_of_science}" target="_blank">${teacherData.profiles.web_of_science}</a></div>` : ''}
+                        <a href="#" id="backToList" class="button-link">Назад до списку</a>
+                    </div>
                 </div>
             `;
-
             document.getElementById("backToList").addEventListener("click", function (e) {
                 e.preventDefault();
                 // Відновлюємо структуру списку викладачів
