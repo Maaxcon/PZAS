@@ -1,0 +1,94 @@
+/* Загальні стилі для сторінки статті */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+/* Контейнер для статті */
+.article-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Заголовок статті */
+.article-title {
+    color: #003366;
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.article-meta {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+/* Текст статті */
+.article-content p {
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+/* Стилі для зображень */
+.article-content img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Стилі для списків */
+.article-content ul, .article-content ol {
+    margin-bottom: 20px;
+    padding-left: 40px;
+}
+
+/* Блоки цитат */
+.article-content blockquote {
+    font-style: italic;
+    color: #555;
+    border-left: 4px solid #003366;
+    padding-left: 15px;
+    margin-bottom: 20px;
+    background-color: #f2f4f7;
+    border-radius: 4px;
+}
+
+/* Кнопка повернення до новин */
+.back-to-news {
+    display: inline-block;
+    background-color: #003366;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 30px;
+    transition: background-color 0.3s ease;
+}
+
+.back-to-news:hover {
+    background-color: #00264d;
+}
+
+/* Мобільна версія */
+@media (max-width: 768px) {
+    .article-title {
+        font-size: 28px;
+    }
+    .article-meta {
+        font-size: 12px;
+    }
+}

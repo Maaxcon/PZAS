@@ -1,53 +1,64 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Новини кафедри</title>
-    <link rel="stylesheet" href="/css/newsPage.css">
+    <link rel="icon" type="image/png" href="/img-main-page/chdtu_logo 3.png" />
+    <link rel="stylesheet" href="/css/header_style.css" />
+    <link rel="stylesheet" href="/css/footer_style.css" />
+    <link rel="stylesheet" href="/css/scrolltotop.css" />
+    <link rel="stylesheet" href="/css/newsPage.css" />
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>Новини кафедри</h1>
-            <p class="subtitle">Будьте в курсі останніх подій, досягнень та заходів кафедри</p>
-        </div>
-    </header>
+    <div class="header"></div>
 
-    <nav>
-        <div class="container">
-            <ul>
-                <li><a href="#" class="active">Новини</a></li>
-                <li><a href="#">Навчання</a></li>
-                <li><a href="#">Наукова діяльність</a></li>
-                <li><a href="#">Конференції</a></li>
-                <li><a href="#">Дослідження</a></li>
-                <li><a href="#">Студентське життя</a></li>
-                <li><a href="#">Міжнародна співпраця</a></li>
-            </ul>
+    <div class="news-under-header">
+        <div class="news-container">
+            <h1 class="news-header-title">Новини кафедри</h1>
+            <p class="news-header-subtitle">Будьте в курсі останніх подій, досягнень та заходів кафедри</p>
         </div>
-    </nav>
+    </div>
 
-    <main class="container">
-        <div class="content">
-            <section class="main-news">
-                <h2>Головна новина</h2>
-                <div id="featured-news"></div>
+    <main class="news-container news-main">
+        <div class="news-content">
+            <section class="news-main-news">
+                <h2 class="news-section-title">Головна новина</h2>
+                <div id="featured-news">
+                    <!-- Тут скрипт додасть головну новину з посиланням на повну статтю -->
+                </div>
             </section>
-            
-            <section class="latest-news">
-                <h2>Останні новини</h2>
-                <div id="news-list"></div>
+
+            <section class="news-latest-news">
+                <h2 class="news-section-title">Останні новини</h2>
+                <div id="news-list">
+                    <!-- Тут скрипт додасть список новин з посиланнями на статті -->
+                </div>
             </section>
         </div>
     </main>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Кафедра автоматизованих систем. Всі права захищені.</p>
-        </div>
-    </footer>
+    <!-- scroll -->
+    <button id="scrollToTopBtn">
+        <svg
+            id="arrow-image"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="white"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        >
+            <polyline points="18 15 12 9 6 15" />
+        </svg>
+    </button>
+    <!-- scroll -->
 
-    <script src="script.js"></script>
+    <footer class="footer"></footer>
+
+    <script src="/script/newsPage.js"></script>
+    <script src="/script/script_connect_H-F.js"></script>
+    <script src="/script/scroll-to-top.js"></script>
 </body>
 </html>
