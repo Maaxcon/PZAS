@@ -6,14 +6,14 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Arial', sans-serif; /* Розгляньте можливість використання 'Inter' для узгодженості */
     line-height: 1.6;
     color: #333;
     background-color: #f9f9f9;
 }
 
 /* Container */
-.news-container {
+.news-container { /* Цей контейнер використовується для загального центрування */
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
@@ -25,7 +25,7 @@ body {
     border-bottom: 1px solid #e0e0e0;
     padding: 20px 0;
     text-align: center;
-    border-top: 4px solid #003366;
+    border-top: 4px solid #003366; /* Колір з ваших стилів */
 }
 
 .news-header-title {
@@ -82,7 +82,7 @@ body {
 
 .news-content {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 2fr 1fr; /* Основна новина | Список останніх */
     gap: 30px;
 }
 
@@ -94,106 +94,199 @@ body {
     border-bottom: 2px solid #eaeaea;
 }
 
-/* News Item Styles */
-.news-card {
-    background-color: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
+/* --- СТИЛІ ДЛЯ FEATURED NEWS (ГОЛОВНА НОВИНА) --- */
+#featured-news .news-card.featured { /* Більш специфічний селектор */
+    display: flex;
+    flex-direction: column; /* Зображення зверху, потім контент */
+    border: 1px solid #d0d0d0; /* Трохи виразніша рамка */
+    padding: 0; /* Прибираємо падінги картки, щоб зображення було від краю до краю */
+}
+
+#featured-news .news-card-image-link { /* Посилання, що обгортає зображення */
+    display: block;
+    overflow: hidden; /* Щоб заокруглення працювало для зображення */
+    border-top-left-radius: 8px; /* Заокруглення для верхніх кутів зображення */
+    border-top-right-radius: 8px;
+}
+
+#featured-news .news-card-image {
+    width: 100%;
+    height: auto; /* Автоматична висота */
+    max-height: 350px; /* Максимальна висота, щоб не було занадто великим */
+    object-fit: cover; /* Масштабування зображення */
+    display: block; /* Прибирає зайвий відступ під зображенням */
     transition: transform 0.3s ease;
 }
 
-.news-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+#featured-news .news-card-image-link:hover .news-card-image {
+    transform: scale(1.05); /* Легкий зум при наведенні на зображення */
 }
 
-.news-card-title {
+#featured-news .news-card-content { /* Контейнер для тексту під зображенням */
+    padding: 20px; /* Повертаємо падінги для текстового контенту */
+}
+
+#featured-news .news-card-title {
     color: #003366;
-    font-size: 18px;
+    font-size: 22px; /* Збільшено для головної новини */
     margin-bottom: 10px;
 }
+#featured-news .news-card-title a { /* Стилізація посилання в заголовку */
+    text-decoration: none;
+    color: inherit;
+}
+#featured-news .news-card-title a:hover {
+    text-decoration: underline;
+}
 
-.news-card-date {
-    color: #999;
+#featured-news .news-card-date {
+    color: #888; /* Трохи світліший для дати */
     font-size: 14px;
-    margin-bottom: 10px;
-}
-
-.news-card-description {
-    color: #555;
     margin-bottom: 15px;
 }
 
-.news-read-more {
+#featured-news .news-card-description {
+    color: #444; /* Трохи темніший для кращої читабельності */
+    margin-bottom: 20px;
+    line-height: 1.7;
+}
+
+#featured-news .news-read-more {
     display: inline-block;
     background-color: #003366;
     color: white;
-    padding: 8px 16px;
+    padding: 10px 20px; /* Трохи більша кнопка */
     border-radius: 4px;
     text-decoration: none;
     font-weight: 500;
     transition: background-color 0.3s ease;
 }
 
-.news-read-more:hover {
+#featured-news .news-read-more:hover {
     background-color: #00264d;
 }
 
-/* Latest News Item Styles */
+
+/* --- СТИЛІ ДЛЯ LATEST NEWS (СПИСОК ОСТАННІХ НОВИН) --- */
 .latest-news-item {
     display: flex;
-    align-items: center;
+    align-items: flex-start; /* Змінено на flex-start для кращого вирівнювання, якщо текст різної висоти */
     margin-bottom: 15px;
     background-color: #fff;
     border: 1px solid #e0e0e0;
-    border-radius: 8px;
+    border-radius: 6px; /* Трохи менше заокруглення */
     padding: 15px;
-    transition: transform 0.3s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Швидша анімація */
 }
 
 .latest-news-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px); /* Менший зсув */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* Легша тінь */
 }
 
-.latest-news-item a {
+.latest-news-image-link,
+.latest-news-image-placeholder {
+    flex-shrink: 0; 
+    width: 70px;  /* Розмір мініатюри */
+    height: 70px; /* Розмір мініатюри */
+    margin-right: 15px;
+    display: block; 
+    overflow: hidden; 
+    border-radius: 4px; /* Заокруглення для мініатюри/заглушки */
+}
+
+.latest-news-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+.latest-news-image-link:hover .latest-news-thumbnail {
+    transform: scale(1.1); /* Ефект зуму для мініатюри */
+}
+
+.latest-news-image-placeholder {
+    background-color: #f0f0f0; /* Колір для заглушки */
+    /* Можна додати іконку або текст */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7em;
+    color: #aaa;
+}
+.latest-news-image-placeholder::before {
+    /* content: "Фото"; */ /* Приклад тексту для заглушки */
+}
+
+.latest-news-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column; /* Дата над заголовком */
+}
+
+.latest-news-item .news-date-condensed { /* Стилі для дати в списку останніх новин */
+    /* min-width: auto; -- Видалено, оскільки дата тепер частина .latest-news-info */
+    text-align: left; /* Вирівнювання по лівому краю */
+    margin-bottom: 5px;
+    font-size: 0.8em;
+    color: #777;
+}
+
+.latest-news-item .news-date-condensed .day {
+    font-size: 1em; /* Адаптуємо розмір, якщо потрібно */
+    font-weight: bold;
+    color: #003366; /* Колір дня */
+    margin-right: 4px;
+}
+
+.latest-news-item .news-date-condensed .month {
+    font-size: 1em; /* Адаптуємо розмір */
+    color: #555;
+}
+
+.latest-news-item .news-title { /* Це h4 */
+    font-size: 16px; /* Розмір для заголовків у списку */
+    font-weight: 500; /* Трохи менш жирний, ніж головна новина */
+    line-height: 1.3;
+    margin: 0; /* Прибираємо зайві відступи */
+}
+
+.latest-news-item .news-title a { /* Посилання всередині заголовка */
     color: #003366;
     text-decoration: none;
-    font-weight: 500;
-    flex: 1;
     transition: color 0.3s ease;
 }
 
-.latest-news-item a:hover {
-    color: #00264d;
+.latest-news-item .news-title a:hover {
+    color: #0052CC; /* Колір при наведенні, як у навігації */
+    text-decoration: underline;
 }
 
-.news-date {
-    min-width: 80px;
-    text-align: center;
-    margin-right: 15px;
-}
-
-.news-date .day {
-    font-size: 24px;
-    font-weight: bold;
-    color: #003366;
-}
-
-.news-date .month {
-    font-size: 14px;
-    color: #555;
-}
 
 /* Responsive */
 @media (max-width: 768px) {
     .news-content {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Все в одну колонку */
     }
     
     .news-nav ul {
-        flex-wrap: nowrap;
+        flex-wrap: nowrap; /* Залишаємо, щоб можна було скролити категорії */
+    }
+
+    #featured-news .news-card-title {
+        font-size: 20px;
+    }
+
+    .latest-news-item {
+        padding: 12px;
+    }
+    .latest-news-image-link,
+    .latest-news-image-placeholder {
+        width: 60px;
+        height: 60px;
+        margin-right: 12px;
+    }
+    .latest-news-item .news-title {
+        font-size: 15px;
     }
 }

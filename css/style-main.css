@@ -1,14 +1,18 @@
 /* Загальні скидання */
 body {
     width: 100%;
-    /* height: 100%; -- Може бути непотрібним і іноді викликає проблеми з прокруткою */
+    height: 100%;
     margin: 0;
     padding: 0;
     font-family: "Inter", sans-serif;
     background-color: #f9f9f9;
     color: #333;
-    overflow-x: hidden; /* ЗАПОБІГАЄ ГОРИЗОНТАЛЬНІЙ ПРОКРУТЦІ */
 }
+/* Опціонально, якщо використовуєте блокування прокрутки з JS для мобільного меню:
+body.no-scroll {
+    overflow: hidden;
+}
+*/
 
 * {
     margin: 0;
@@ -31,7 +35,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden; /* Дуже важливо для обрізки iframe */
+    overflow: hidden;
     z-index: 1;
     pointer-events: none; 
 }
@@ -40,19 +44,20 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    
-    /* Логіка для покриття, аналогічна object-fit: cover */
-    /* Для екранів, які ширші або дорівнюють співвідношенню 16:9 */
     width: 100vw; 
-    height: calc(100vw * 9 / 16); 
-    
-    /* Для екранів, які вищі (вужчі) за співвідношення 16:9 */
-    /* Якщо висота, розрахована вище, менша за 100vh, то використовуємо наступні значення */
-    min-height: 100vh; /* Гарантує, що висота покриє екран */
-    min-width: calc(100vh * 16 / 9); /* Ширина розраховується від висоти для збереження 16:9 */
+    height: 56.25vw; /* 100vw * 9/16 */
+    min-width: 100vw; 
+    min-height: 100vh; 
+    transform: translate(-50%, -50%);
 }
 
+@media (orientation: portrait) {
+    .hero-youtube-iframe {
+        /* Для кращого покриття у портретній орієнтації, якщо потрібно */
+        /* width: 177.77vh; */ /* 100vh * 16/9 */
+        /* height: 100vh; */
+    }
+}
 
 .video-overlay-content {
     position: relative; 
@@ -64,7 +69,7 @@ body {
     align-items: center;
     text-align: center;
     padding: 20px;
-    background-color: rgba(0, 0, 0, 0.55); 
+    background-color: rgba(0, 0, 0, 0.65); 
     color: #ffffff;
 }
 
@@ -75,22 +80,19 @@ body {
     margin-bottom: 30px;
     max-width: 800px;
     font-family: "Inter", sans-serif;
-    color: #ffffff; 
-    background-color: rgba(0, 0, 0, 0.6); 
-    padding: 25px 40px;                   
-    border-radius: 8px;                   
-    text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
+    text-shadow: 0px 1px 6px rgba(0, 0, 0, 0.8); 
 }
 
 .hero-button {
     padding: 15px 40px;
     font-size: 18px;
     font-weight: 600;
+    /* Успадковує стилі від .more-button нижче */
 }
 
 /* Загальний контейнер для основного контенту після hero */
 #main-content {
-    padding-top: 40px;
+    padding-top: 40px; /* Може бути непотрібним, якщо хедер sticky і не перекриває */
 }
 
 .section-title {
@@ -101,13 +103,13 @@ body {
     text-align: center;
 }
 
-/* Останні новини */
+/* Останні новини (для секції .news-section) */
 .news-section {
     padding: 40px 20px;
     background-color: #f9f9f9;
 }
 
-.news-container {
+.news-container { /* Контейнер для карток новин у секції Останні новини */
     display: flex;
     justify-content: center; 
     gap: 30px; 
@@ -118,7 +120,7 @@ body {
     margin-right: auto;
 }
 
-.news-card {
+.news-card { /* Стилі для карток в .news-container */
     flex: 1 1 300px; 
     max-width: 400px; 
     min-height:320px;
@@ -147,9 +149,10 @@ body {
     font-size: 20px;
     font-weight: 600;
     color: #333;
+    line-height: 1.4;
 }
 
-.news-card p {
+.news-card p { /* Для короткого опису, якщо він буде в .news-card */
     padding: 0 20px 20px;
     color: #666;
     font-size: 15px; 
@@ -163,7 +166,8 @@ body {
     margin-top: 20px; 
 }
 
-.more-button { 
+/* Загальні стилі для кнопок "дізнатися більше" */
+.more-button, .more-button-news, .hero-button { 
     display: inline-block; 
     background: linear-gradient(to right, #2e71ba, #283594); 
     color: white !important;
@@ -178,82 +182,118 @@ body {
     cursor: pointer; 
 }
 
-.more-button:hover {
+.more-button:hover, .more-button-news:hover, .hero-button:hover {
     transform: translateY(-3px); 
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); 
 }
 
-.more-button-news { 
-    display: inline-block;
-    background: linear-gradient(to right, #2e71ba, #283594);
-    color: white !important;
-    text-decoration: none;
-    padding: 15px 50px;
-    border-radius: 30px;
-    font-weight: 600;
-    font-size: 16px;
-    transition: transform 0.3s, box-shadow 0.3s;
-    border: none;
+.more-button-news { /* Специфічні налаштування, якщо потрібні */
+    padding: 15px 50px; 
 }
 
-.more-button-news:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
 
-/* Цікаві факти */
-.facts-section {
+/* Секція "Актуальні новини" (раніше "Цікаві факти") */
+.facts-section { 
     padding: 60px 20px;
-    background-color: #fff;
+    background-color: #fff; 
 }
 
-.facts-container {
+.facts-container { /* Контейнер для трьох карток новин */
     display: flex;
-    justify-content: space-around;
-    gap: 30px;
+    justify-content: space-around; 
+    gap: 30px; 
     max-width: 1200px;
     margin: 0 auto;
-    flex-wrap: wrap;
+    flex-wrap: wrap; 
 }
 
-.fact-card {
+/* Стилі для карток новин всередині .facts-container */
+.news-card-in-facts {
+    flex: 1 1 300px; 
+    max-width: 360px; 
+    background-color: #ffffff; 
+    border-radius: 8px;
+    overflow: hidden; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    flex: 1 1 280px;
-    padding: 25px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.fact-card img {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 20px;
+.news-card-in-facts:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
 
-.fact-card p {
+.news-card-link-wrapper { 
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; 
+}
+
+.news-card-in-facts .news-card-image-container {
+    width: 100%;
+    height: 200px; 
+    overflow: hidden; 
+}
+
+.news-card-in-facts .news-card-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.news-card-in-facts .news-card-date {
+    font-size: 0.85em;
+    color: #777;
+    margin-bottom: 8px; 
+    padding: 15px 20px 0; /* Падінг зверху і з боків, знизу 0 */
+}
+
+.news-card-in-facts h3 {
+    padding: 8px 20px 15px; /* Адаптовані падінги з урахуванням дати */
+    font-size: 18px;
+    font-weight: 600;
     color: #333;
-    font-size: 16px;
-    line-height: 1.6;
+    margin: 0; 
+    line-height: 1.4;
+    flex-grow: 1; 
 }
 
-/* Досягнення кафедри - ОНОВЛЕНО для адаптивної сітки */
+
+/* Досягнення кафедри */
 .achievements-section {
-    padding: 60px 20px; /* Повертаємо горизонтальні падінги для секції */
+    padding: 60px 0; 
     background-color: #f0f4f8; 
+    overflow: hidden; 
 }
 
 .achievements-container {
-    display: flex;         
-    flex-wrap: wrap;       /* Дозволяє перенесення карток */
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto; 
     justify-content: center; 
     gap: 30px;
-    max-width: 1200px;     
-    margin: 0 auto;        
-    /* Прибираємо стилі для горизонтальної прокрутки */
+    padding: 20px; 
+    -webkit-overflow-scrolling: touch; 
+    scrollbar-width: thin; 
+    scrollbar-color: #0052CC #f0f4f8; 
+}
+
+.achievements-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.achievements-container::-webkit-scrollbar-track {
+    background: #e0e4e8; 
+    border-radius: 4px;
+}
+
+.achievements-container::-webkit-scrollbar-thumb {
+    background-color: #0052CC; 
+    border-radius: 4px;
 }
 
 .achievement-card {
@@ -266,9 +306,8 @@ body {
     align-items: center;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    flex-basis: 280px; /* Базова ширина картки */
-    flex-grow: 1;      /* Дозволяє карткам заповнювати вільний простір */
-    max-width: 100%;   /* Обмеження на малих екранах */
+    width: 280px; 
+    flex-shrink: 0; 
 }
 
 .achievement-card:hover {
@@ -338,23 +377,19 @@ body {
 @media (max-width: 1024px) {
     .hero-title {
         font-size: 40px;
-        max-width: 90%; 
-        padding: 20px 30px; 
+        max-width: 600px;
     }
     .section-title {
         font-size: 28px;
-    }
-    .achievement-card { /* Приклад адаптації для карток досягнень */
-        flex-basis: calc(50% - 15px); /* Дві картки в рядку мінус половина gap */
     }
 }
 
 @media (max-width: 768px) {
     .hero-title {
         font-size: 32px;
-        padding: 15px 25px; 
+        max-width: 90%;
     }
-    .hero-button {
+    .hero-button { /* Загальний стиль для .more-button тепер застосовується */
         padding: 12px 30px;
         font-size: 16px;
     }
@@ -362,14 +397,10 @@ body {
         flex-direction: column;
         align-items: center;
     }
-    .news-card, .fact-card {
+    .news-card, .news-card-in-facts { /* Додано .news-card-in-facts */
         flex-basis: auto;
         width: 90%;
-        max-width: 400px;
-    }
-    .achievement-card { /* Одна картка в рядку на менших екранах */
-        flex-basis: 100%;
-        max-width: 400px; /* Обмеження ширини для однієї картки */
+        max-width: 400px; /* Обмеження для карток в стовпець */
     }
     
     .indicator {
@@ -386,17 +417,18 @@ body {
 @media (max-width: 480px) {
     .hero-title {
         font-size: 26px;
-        line-height: 1.4; 
-        padding: 15px 20px;
     }
     .section-title {
         font-size: 24px;
     }
-    .news-card h3 {
+    .news-card h3, .news-card-in-facts h3 { /* Додано .news-card-in-facts */
         font-size: 18px;
     }
     .news-card p {
         font-size: 14px;
+    }
+    .news-card-in-facts .news-card-date {
+        font-size: 0.8em;
     }
     .achievement-card h3 {
         font-size: 17px;
