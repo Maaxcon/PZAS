@@ -1,11 +1,13 @@
 /* Загальні скидання */
 body {
     width: 100%;
-    height: 100%;
+    /* height: 100%; -- Може бути непотрібним і іноді викликає проблеми з прокруткою */
     margin: 0;
     padding: 0;
     font-family: "Inter", sans-serif;
     background-color: #f9f9f9;
+    color: #333;
+    overflow-x: hidden; /* ЗАПОБІГАЄ ГОРИЗОНТАЛЬНІЙ ПРОКРУТЦІ */
 }
 
 * {
@@ -14,60 +16,89 @@ body {
     box-sizing: border-box;
 }
 
-
-/* Основна частина */
-main {
-   
-    display: flex;
-    width: 100%;
-    height: 278px;
-    padding-left: 20px;
-    justify-content: space-between;
+/* Секція Hero з відео YouTube */
+.video-hero-section {
     position: relative;
-    overflow: visible;
-    background-color: #fff;
+    width: 100%;
+    height: 100vh; 
+    overflow: hidden; 
+    background-color: #000; 
 }
 
-.title_and_but {
+.youtube-video-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Дуже важливо для обрізки iframe */
+    z-index: 1;
+    pointer-events: none; 
+}
+
+.hero-youtube-iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    /* Логіка для покриття, аналогічна object-fit: cover */
+    /* Для екранів, які ширші або дорівнюють співвідношенню 16:9 */
+    width: 100vw; 
+    height: calc(100vw * 9 / 16); 
+    
+    /* Для екранів, які вищі (вужчі) за співвідношення 16:9 */
+    /* Якщо висота, розрахована вище, менша за 100vh, то використовуємо наступні значення */
+    min-height: 100vh; /* Гарантує, що висота покриє екран */
+    min-width: calc(100vh * 16 / 9); /* Ширина розраховується від висоти для збереження 16:9 */
+}
+
+
+.video-overlay-content {
+    position: relative; 
+    z-index: 2; 
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 50%;
-
-}
-
-
-main button {
-    padding: 15px 20px;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.55); 
     color: #ffffff;
-    height: 50px;
-    width: fit-content;
-    background: #0052CC;
-    font-family: "Inter", sans-serif;
-    border: none;
-    font-weight: 600;
-    font-size: 16px;
-    border-radius: 4px;
-    cursor: pointer;
 }
 
-.title {
-    margin-left: 200px;
-    width: 660px;
-    font-size: 45px;
-    line-height: 1.2;
-    margin-bottom: 30px;
-    font-family: "Inter", sans-serif;
+.hero-title {
+    font-size: 48px;
     font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 30px;
+    max-width: 800px;
+    font-family: "Inter", sans-serif;
+    color: #ffffff; 
+    background-color: rgba(0, 0, 0, 0.6); 
+    padding: 25px 40px;                   
+    border-radius: 8px;                   
+    text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-.student_photo_main {
-    width: auto;
-    height: 100%;
-    position: absolute;
-    right: 20%;
-    top: 0;
-   
+.hero-button {
+    padding: 15px 40px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* Загальний контейнер для основного контенту після hero */
+#main-content {
+    padding-top: 40px;
+}
+
+.section-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    color: #333;
+    text-align: center;
 }
 
 /* Останні новини */
@@ -76,108 +107,113 @@ main button {
     background-color: #f9f9f9;
 }
 
-.section-title {
-    font-size: 32px;
-    font-weight: 700;
-    margin-bottom: 30px;
-    color: #000;
-    text-align: center;
-}
-
 .news-container {
     display: flex;
-    justify-content: space-between;
-    gap: 20px;
+    justify-content: center; 
+    gap: 30px; 
     margin-bottom: 30px;
     flex-wrap: wrap;
-    
+    max-width: 1200px; 
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .news-card {
-    max-width: 430px;
+    flex: 1 1 300px; 
+    max-width: 400px; 
     min-height:320px;
     background-color: #fff;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
- 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+    display: flex; 
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
 .news-card img {
     width: 100%;
-    height: 180px;
+    height: 200px; 
     object-fit: cover;
 }
 
 .news-card h3 {
-    padding: 15px 15px 5px;
+    padding: 20px 20px 10px; 
     font-size: 20px;
     font-weight: 600;
+    color: #333;
 }
 
 .news-card p {
-    padding: 0 15px 15px;
+    padding: 0 20px 20px;
     color: #666;
-    font-size: 14px;
+    font-size: 15px; 
+    line-height: 1.6; 
+    flex-grow: 1; 
 }
 
 .more-news {
     display: flex;
     justify-content: center;
+    margin-top: 20px; 
 }
 
-.more-button {
-    display: inline-block; /* Забезпечує, що кнопка займає лише необхідну ширину */
-    background: linear-gradient(to right, #2e71ba, #283594); /* Градієнт */
-    color: white;
+.more-button { 
+    display: inline-block; 
+    background: linear-gradient(to right, #2e71ba, #283594); 
+    color: white !important;
     text-decoration: none;
-    padding: 15px 60px; /* Зменшено внутрішні відступи */
-    border-radius: 30px; /* Закруглені краї */
+    padding: 15px 40px; 
+    border-radius: 30px; 
     font-weight: 600;
     font-size: 16px;
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
-    border: none; /* Видалення рамки */
-    cursor: pointer; /* Зміна курсора на "руку" */
-    margin: 0 auto; /* Центрування кнопки */
+    border: none; 
+    cursor: pointer; 
 }
 
 .more-button:hover {
-    transform: translateY(-3px); /* Легке підняття при наведенні */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Тінь при наведенні */
+    transform: translateY(-3px); 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); 
 }
 
-.more-button-news {
+.more-button-news { 
     display: inline-block;
     background: linear-gradient(to right, #2e71ba, #283594);
-    color: white;
+    color: white !important;
     text-decoration: none;
-    padding: 15px 60px;
+    padding: 15px 50px;
     border-radius: 30px;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 16px;
     transition: transform 0.3s, box-shadow 0.3s;
     border: none;
 }
 
-.more-button-news:hover,
-.more-button:hover {
+.more-button-news:hover {
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
 /* Цікаві факти */
 .facts-section {
-    padding: 40px 20px;
+    padding: 60px 20px;
     background-color: #fff;
 }
 
 .facts-container {
     display: flex;
-    justify-content: space-between;
-    gap: 20px;
+    justify-content: space-around;
+    gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
+    flex-wrap: wrap;
 }
 
 .fact-card {
@@ -185,70 +221,84 @@ main button {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    flex: 1;
-    padding: 20px;
+    flex: 1 1 280px;
+    padding: 25px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
 .fact-card img {
-    width: 44px;
-    height: 44px;
-    margin-bottom: 15px;
+    width: 50px;
+    height: 50px;
+    margin-bottom: 20px;
 }
 
 .fact-card p {
     color: #333;
     font-size: 16px;
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
-/* Досягнення кафедри */
+/* Досягнення кафедри - ОНОВЛЕНО для адаптивної сітки */
 .achievements-section {
-    padding: 40px 20px;
-    background-color: #f9f9f9;
+    padding: 60px 20px; /* Повертаємо горизонтальні падінги для секції */
+    background-color: #f0f4f8; 
 }
 
 .achievements-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
+    display: flex;         
+    flex-wrap: wrap;       /* Дозволяє перенесення карток */
+    justify-content: center; 
+    gap: 30px;
+    max-width: 1200px;     
+    margin: 0 auto;        
+    /* Прибираємо стилі для горизонтальної прокрутки */
 }
 
 .achievement-card {
     background-color: #fff;
     border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex-basis: 280px; /* Базова ширина картки */
+    flex-grow: 1;      /* Дозволяє карткам заповнювати вільний простір */
+    max-width: 100%;   /* Обмеження на малих екранах */
+}
+
+.achievement-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
 
 .achievement-card img {
-    width: 55px;
-    height: 55px;
-    margin-bottom: 15px;
+    width: 60px; 
+    height: 60px;
+    margin-bottom: 15px; 
 }
 
 .achievement-card h3 {
-    font-size: 18px;
+    font-size: 18px; 
     font-weight: 600;
     margin-bottom: 10px;
-    color: #0066cc;
+    color: #0052CC; 
 }
 
 .achievement-card p {
-    color: #666;
-    font-size: 14px;
+    color: #555; 
+    font-size: 14px; 
     line-height: 1.5;
 }
 
 /* Ключові показники */
 .indicators-section {
-    padding: 40px 20px;
-    background-color: #0066cc;
+    padding: 60px 20px;
+    background-color: #0052CC;
     color: #fff;
 }
 
@@ -259,22 +309,105 @@ main button {
 .indicators-container {
     display: flex;
     justify-content: space-around;
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .indicator {
     text-align: center;
     padding: 20px;
+    flex-basis: 200px;
+    flex-grow: 1;
 }
 
 .indicator h3 {
-    font-size: 42px;
+    font-size: 48px;
     font-weight: 700;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .indicator p {
-    font-size: 16px;
-    font-weight: 500;
+    font-size: 17px;
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+/* Адаптивні стилі */
+@media (max-width: 1024px) {
+    .hero-title {
+        font-size: 40px;
+        max-width: 90%; 
+        padding: 20px 30px; 
+    }
+    .section-title {
+        font-size: 28px;
+    }
+    .achievement-card { /* Приклад адаптації для карток досягнень */
+        flex-basis: calc(50% - 15px); /* Дві картки в рядку мінус половина gap */
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 32px;
+        padding: 15px 25px; 
+    }
+    .hero-button {
+        padding: 12px 30px;
+        font-size: 16px;
+    }
+    .news-container, .facts-container, .indicators-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .news-card, .fact-card {
+        flex-basis: auto;
+        width: 90%;
+        max-width: 400px;
+    }
+    .achievement-card { /* Одна картка в рядку на менших екранах */
+        flex-basis: 100%;
+        max-width: 400px; /* Обмеження ширини для однієї картки */
+    }
+    
+    .indicator {
+        flex-basis: 100%;
+    }
+    .indicator h3 {
+        font-size: 40px;
+    }
+    .indicator p {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 26px;
+        line-height: 1.4; 
+        padding: 15px 20px;
+    }
+    .section-title {
+        font-size: 24px;
+    }
+    .news-card h3 {
+        font-size: 18px;
+    }
+    .news-card p {
+        font-size: 14px;
+    }
+    .achievement-card h3 {
+        font-size: 17px;
+    }
+    .achievement-card p {
+        font-size: 14px;
+    }
+     .indicator h3 {
+        font-size: 36px;
+    }
+    .indicator p {
+        font-size: 15px;
+    }
 }

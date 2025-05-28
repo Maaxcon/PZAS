@@ -24,10 +24,10 @@ const bucket = admin.storage().bucket(); // Firebase Storage
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// 🔒 Безпека (дозволяє Firebase та Firestore API)
+// 🔒 Безпека (helmet - його CSP буде перезаписано нижче, але інші його функції залишаться)
 app.use(
   helmet({
-    contentSecurityPolicy: {
+    contentSecurityPolicy: { // Ця конфігурація CSP від helmet буде перезаписана наступним middleware
       directives: {
         defaultSrc: ["'self'"],
         scriptSrc: [
@@ -43,6 +43,7 @@ app.use(
           "https://firebasestorage.googleapis.com",
         ],
         styleSrc: ["'self'", "https://cdnjs.cloudflare.com", "'unsafe-inline'"],
+        // frameSrc тут не визначено, тому береться з defaultSrc або блокується
       },
     },
   })
@@ -57,17 +58,20 @@ app.use(
   })
 );
 
-// 🛡️ Додатковий Content-Security-Policy
+// 🛡️ Додатковий Content-Security-Policy (ЦЕЙ БЛОК ПОТРІБНО ОНОВИТИ)
 app.use((req, res, next) => {
   res.setHeader(
     "Content-Security-Policy",
     "default-src 'self'; " +
     "script-src 'self' https://maps.googleapis.com https://www.gstatic.com https://www.googleapis.com; " +
-    "style-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline'; " +
-    "font-src 'self' https://cdnjs.cloudflare.com; " +
-    "frame-src 'self' https://www.google.com; " +
+    // ОНОВЛЕНО style-src: додано https://fonts.googleapis.com
+    "style-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline' https://fonts.googleapis.com; " +
+    // ОНОВЛЕНО font-src: додано https://fonts.gstatic.com (cdnjs тут, можливо, не потрібен для шрифтів)
+    "font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; " +
+    // ОНОВЛЕНО frame-src: додано https://www.youtube.com
+    "frame-src 'self' https://www.google.com https://www.youtube.com; " +
     "connect-src 'self' https://firestore.googleapis.com https://www.googleapis.com https://firebasestorage.googleapis.com; " +
-    "img-src 'self' https://firebasestorage.googleapis.com https://firebasestorage.googleapis.com https://cdn.jsdelivr.net data:;"
+    "img-src 'self' https://firebasestorage.googleapis.com https://cdn.jsdelivr.net data:;" // Видалено дублікат https://firebasestorage.googleapis.com
   );
   next();
 });
@@ -85,6 +89,9 @@ app.use("/css", express.static(path.join(__dirname, "css")));
 app.use("/img-main-page", express.static(path.join(__dirname, "img-main-page")));
 app.use("/containsHF_HTML", express.static(path.join(__dirname, "containsHF_HTML")));
 app.use("/script", express.static(path.join(__dirname, "script")));
+app.use("/video", express.static(path.join(__dirname, "video"))); // Якщо у вас є локальні відео
+
+// ... (решта вашого коду server.js залишається без змін) ...
 
 // 📄 Маршрути
 app.get("/", (req, res) => {
