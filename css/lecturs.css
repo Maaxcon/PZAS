@@ -219,6 +219,8 @@ h2 {
     /* Додаткові стилі для кнопки */
 }
 
+
+
 /* Динамічна сторінка викладача */
 .teacher-details-page {
     background: #fff;
@@ -232,10 +234,33 @@ h2 {
     margin: auto;
 }
 
-.teacher-details-page img {
+.teacher-details-page .photo-and-basic-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     max-width: 220px;
     flex-shrink: 0;
+    background-color: #f9f9f9;
+    
+}
+
+.teacher-details-page .photo-and-basic-info img {
+    width: 100%;
     border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+.teacher-details-page .basic-info-block {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    font-size: 14px;
+}
+
+.teacher-details-page .basic-info-block div {
+    margin-bottom: 10px;
 }
 
 .teacher-details-page .details {
@@ -243,7 +268,7 @@ h2 {
     text-align: justify;
 }
 
-/* Стилі для інформаційних блоків */
+/* Інформаційні блоки */
 .teacher-details-page .info-block {
     background-color: #f9f9f9;
     padding: 15px 20px;
@@ -252,7 +277,7 @@ h2 {
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Стилі для кнопок */
+/* Кнопка */
 .teacher-details-page a.button-link {
     display: inline-block;
     margin-top: 12px;
@@ -268,7 +293,7 @@ h2 {
     background-color: #006cc1;
 }
 
-/* Стилі для простих посилань */
+/* Посилання */
 .teacher-details-page .details a:not(.button-link) {
     padding: 0;
     background-color: transparent;
@@ -278,8 +303,8 @@ h2 {
 
 .teacher-details-page .details a:not(.button-link):hover {
     color: #0056a3;
-    text-decoration: underline;
 }
+
 
 /* Адаптивність */
 @media (max-width: 768px) {

@@ -103,6 +103,15 @@ app.get("/html-page/121", (req, res) => {
   res.sendFile(path.join(__dirname, "html-page", "121.html"));
 });
 
+app.get("/html-page/newsPage", (req, res) => {
+  res.sendFile(path.join(__dirname, "html-page", "newsPage.html"));
+});
+
+app.get("/html-page/newsPage/article/:id", (req, res) => {
+  res.sendFile(path.join(__dirname, "html-page", "newsArticle.html"));
+});
+
+
 // ✅ Шляхи до header/footer
 app.get("/header.html", (req, res) => {
   res.sendFile(path.join(__dirname, "containsHF_HTML", "header.html"));
@@ -115,6 +124,10 @@ app.get("/footer.html", (req, res) => {
 // 📰 JSON з новинами
 app.get("/news.json", (req, res) => {
   res.sendFile(path.join(__dirname, "news.json"));
+});
+
+app.get("/newsPage.json", (req, res) => {
+  res.sendFile(path.join(__dirname, "newsPage.json"));
 });
 
 // 🔥 Firebase: додавання користувача

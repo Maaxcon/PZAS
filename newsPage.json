@@ -1,0 +1,53 @@
+{
+  "featuredNews": {
+    "id": 1,
+    "title": "Підписано договір про співпрацю з провідними IT-компаніями",
+    "date": "2025-05-15",
+    "content": "Кафедра автоматизованих систем нашого університету підписала договір про співпрацю з провідними IT-компаніями регіону. Це відкриває нові можливості для наших студентів в IT-секторі. В рамках співпраці заплановані стажування для найкращих студентів та впровадження спільних освітніх проектів. Угода також передбачає можливість залучення фахівців з компаній для проведення гостьових лекцій.",
+    "image": "/img-main-page/featured-1.jpg",
+    "link": "/news/1",
+    "fullArticle": "html-page/articles/featured-1.html"
+  },
+  "latestNews": [
+    {
+      "id": 2,
+      "title": "Студенти нашої кафедри перемогли на IT-Олімпіаді",
+      "date": "2025-05-10",
+      "image": "/img-main-page/news-2.jpg",
+      "link": "/news/2",
+      "fullArticle": "html-page/articles/news-2.html"
+    },
+    {
+      "id": 3,
+      "title": "Оновлено програму курсу 'Штучний інтелект'",
+      "date": "2025-05-08",
+      "image": "/img-main-page/news-3.jpg",
+      "link": "/news/3",
+      "fullArticle": "html-page/articles/news-3.html"
+    },
+    {
+      "id": 4,
+      "title": "Відкрито реєстрацію на літню школу програмування",
+      "date": "2025-05-05",
+      "image": "/img-main-page/news-4.jpg",
+      "link": "/news/4",
+      "fullArticle": "html-page/articles/news-4.html"
+    },
+    {
+      "id": 5,
+      "title": "Відбудеться гостьова лекція від провідного спеціаліста Google",
+      "date": "2025-04-25",
+      "image": "/img-main-page/news-5.jpg",
+      "link": "/news/5",
+      "fullArticle": "html-page/articles/news-5.html"
+    },
+    {
+      "id": 6,
+      "title": "Студентам доступні нові можливості стажування в IT-компаніях",
+      "date": "2025-04-20",
+      "image": "/img-main-page/news-6.jpg",
+      "link": "/news/6",
+      "fullArticle": "html-page/articles/news-6.html"
+    }
+  ]
+}
