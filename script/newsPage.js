@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() { 
     // Завантажимо новини з JSON файлу
     fetch('/newsPage.json')
         .then(response => response.json())
@@ -35,7 +35,6 @@ function displayFeaturedNews(featuredNews) {
             <div class="news-card-date">${formattedDate}</div>
             <p class="news-card-description">${featuredNews.content}</p>
             <a href="/articlePage.html?id=${featuredNews.id}" class="news-read-more">Читати більше</a>
-
         </div>
     `;
     
@@ -51,9 +50,12 @@ function displayLatestNews(latestNews) {
         return;
     }
 
+    // Показати лише останні 5 новин
+    const latestFive = latestNews.slice(-5).reverse();
+
     let newsHTML = '';
     
-    latestNews.forEach(news => {
+    latestFive.forEach(news => {
         const date = new Date(news.date);
         const day = date.getDate();
         const month = date.toLocaleDateString('uk-UA', { month: 'short' });
@@ -66,7 +68,6 @@ function displayLatestNews(latestNews) {
                 </div>
                 <div class="news-title">
                     <a href="/articlePage.html?id=${news.id}">${news.title}</a>
-
                 </div>
             </div>
         `;
