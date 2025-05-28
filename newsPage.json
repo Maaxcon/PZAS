@@ -49,5 +49,22 @@
       "link": "/news/6",
       "fullArticle": "html-page/articles/news-6.html"
     }
+    ,
+    {
+      "id": 7,
+      "title": "Відкрито нову лабораторію з робототехніки",
+      "date": "2025-04-15",
+      "image": "/img-main-page/news-7.jpg",
+      "link": "/news/7",
+      "fullArticle": "html-page/articles/news-7.html"
+    },
+    {
+      "id": 8,
+      "title": "Зустріч з випускниками кафедри",
+      "date": "2025-04-10",
+      "image": "/img-main-page/news-8.jpg",
+      "link": "/news/8",
+      "fullArticle": "html-page/articles/news-8.html"
+    }
   ]
 }

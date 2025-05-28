@@ -114,6 +114,10 @@ app.get("/html-page/newsPage", (req, res) => {
   res.sendFile(path.join(__dirname, "html-page", "newsPage.html"));
 });
 
+app.get("/html-page/aboutDepartament", (req, res) => {
+  res.sendFile(path.join(__dirname, "html-page", "aboutDepartament.html"));
+});
+
 app.get("/html-page/newsPage/article/:id", (req, res) => {
   res.sendFile(path.join(__dirname, "html-page", "newsArticle.html"));
 });
